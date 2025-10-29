@@ -1,13 +1,14 @@
 from modules.classifier import ClaimsClassifier
-from modules.create_csv import crear_csv
+from modules.load_data import load_data
 import pickle
 
-datos = crear_csv("./data/frases.json")
-X = datos['reclamo']
-y = datos['etiqueta']
+data = load_data("./data/frases.json")
+X = data['reclamo']
+y = data['etiqueta']
 
 clf = ClaimsClassifier()
 clf.fit(X, y)
 
-with open('./data/claims_clf.pkl', 'wb') as archivo:
-    pickle.dump(clf, archivo)
+with open('./data/claims_clf.pkl', 'wb') as file:
+    pickle.dump(clf, file)
+    print("Clasificador guardado en './data/claims_clf.pkl'")
