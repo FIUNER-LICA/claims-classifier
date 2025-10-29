@@ -2,10 +2,11 @@ import pickle
 
 # Abrir el archivo con el clasificador y guardarlo en la variable clf
 with open('./data/claims_clf.pkl', 'rb') as archivo:
-  clf  = pickle.load(archivo)
+    clf  = pickle.load(archivo)
 
 # Ahora en clf tenemos el clasificador entrenado
 
+# Ejemplos de reclamos a clasificar
 claims = [
     "La computadora 1 del laboratorio 3 no enciende", 
     "El proyector del aula 2 no proyecta la imagen", 
@@ -17,8 +18,12 @@ claims = [
     "El baño de la planta baja está inundado",
 ]
 
-# Clasificar los reclamos
+# En los ejemplos siguientes, tener presente que 
+# el método `classify()` recibe como parámetro una 
+# lista de reclamos (lista de strings).
+
+# Clasificar varios reclamos
 print(clf.classify(claims))
 
-# Clasificar único reclamo
+# Clasificar un reclamo
 print(clf.classify(["El proyector del aula 7 no proyecta la imagen"]))
