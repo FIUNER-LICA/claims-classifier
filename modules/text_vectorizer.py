@@ -11,7 +11,7 @@ class TextVectorizer(BaseEstimator, TransformerMixin):
         """
         self.__nlp = spacy.load(p_language_model)
         self.__word2idx = {}
-        self.__vocabulario = None
+        self.__vocabulary = None
 
     def __get_tokens(self, texto):
         """
@@ -28,7 +28,7 @@ class TextVectorizer(BaseEstimator, TransformerMixin):
         """
         Convierte un texto en un vector de frecuencia de palabras basado en el vocabulario aprendido.
         """
-        word_vector = np.zeros(len(self.__vocabulario), dtype=np.int_)
+        word_vector = np.zeros(len(self.__vocabulary), dtype=np.int_)
         texto = self.__get_tokens(texto)
         for word in texto.split(" "):
             idx = self.__word2idx.get(word)
@@ -40,15 +40,15 @@ class TextVectorizer(BaseEstimator, TransformerMixin):
         """
         Construye el vocabulario a partir del conjunto de textos de entrenamiento.
         """
-        X_procesado = [self.__get_tokens(texto) for texto in X]
+        X_processed = [self.__get_tokens(text) for text in X]
 
         words = set()
-        for texto in X_procesado:
-            for word in texto.split(" "):
+        for text in X_processed:
+            for word in text.split(" "):
                 words.add(word)
         
-        self.__vocabulario = list(words)
-        for i, word in enumerate(self.__vocabulario):
+        self.__vocabulary = list(words)
+        for i, word in enumerate(self.__vocabulary):
             self.__word2idx[word] = i
 
         return self
@@ -57,19 +57,18 @@ class TextVectorizer(BaseEstimator, TransformerMixin):
         """
         Transforma una lista de textos en una matriz de vectores.
         """
-        word_vectors = np.zeros((len(X), len(self.__vocabulario)), dtype=np.int_)
-        for i, texto in enumerate(X):
-            word_vectors[i] = self.__text_to_vector(texto)
+        word_vectors = np.zeros((len(X), len(self.__vocabulary)), dtype=np.int_)
+        for i, text in enumerate(X):
+            word_vectors[i] = self.__text_to_vector(text)
         return word_vectors
     
 
 if __name__ == "__main__":
-    from modules.create_csv import crear_csv
-    from sklearn.preprocessing import LabelEncoder
+    from modules.load_data import load_data
 
-    datos = crear_csv("./data/frases.json")
-    X = datos['reclamo']
+    data = load_data("./data/frases.json")
+    X = data['reclamo']
 
     vectorizer = TextVectorizer()
-    X_vectorizado = vectorizer.fit_transform(X)
-    print(X_vectorizado)
+    X_vectorized = vectorizer.fit_transform(X)
+    print(X_vectorized)

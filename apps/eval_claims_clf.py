@@ -6,7 +6,7 @@ with open('./data/claims_clf.pkl', 'rb') as archivo:
 
 # Ahora en clf tenemos el clasificador entrenado
 
-reclamos = [
+claims = [
     "La computadora 1 del laboratorio 3 no enciende", 
     "El proyector del aula 2 no proyecta la imagen", 
     "El piso del aula 5 está muy sucio", 
@@ -18,7 +18,7 @@ reclamos = [
 ]
 
 # Clasificar los reclamos
-print(clf.clasificar(reclamos))
+print(clf.classify(claims))
 
 # Clasificar único reclamo
-print(clf.clasificar(["El proyector del aula 2 no proyecta la imagen"]))
+print(clf.classify(["El proyector del aula 7 no proyecta la imagen"]))
