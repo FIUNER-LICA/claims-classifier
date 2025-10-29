@@ -61,14 +61,3 @@ class TextVectorizer(BaseEstimator, TransformerMixin):
         for i, text in enumerate(X):
             word_vectors[i] = self.__text_to_vector(text)
         return word_vectors
-    
-
-if __name__ == "__main__":
-    from modules.load_data import load_data
-
-    data = load_data("./data/frases.json")
-    X = data['reclamo']
-
-    vectorizer = TextVectorizer()
-    X_vectorized = vectorizer.fit_transform(X)
-    print(X_vectorized)

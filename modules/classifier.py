@@ -39,19 +39,3 @@ class ClaimsClassifier(ClassifierMixin, BaseEstimator):
         """
         return self.__predict(X)
     
-
-if __name__ == "__main__":
-    from modules.load_data import load_data
-    
-    data = load_data("./data/frases.json")
-    X = data['reclamo']
-    y = data['etiqueta']
-    
-    clf = ClaimsClassifier()
-    clf.fit(X, y)
-    
-    print(clf.classify(["La computadora 1 del laboratorio 3 no enciende", \
-                          "El proyector del aula 2 no proyecta la imagen", \
-                          "El piso del aula 5 está muy sucio", \
-                          "No puedo enviar mi trabajo por correo electrónico porque la red no funciona"]))
-    
