@@ -1,4 +1,4 @@
-nltk
+spacy
 scikit-learn
 pandas
 numpy
