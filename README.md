@@ -13,7 +13,7 @@ El objetivo de este proyecto es proveer un clasificador de reclamos entrenado gu
 
 ### Pasos para usar el clasificador 
 
-1 - Clonar el repositorio.
+1 - Descargar como Zip y descomprimir el repositorio.
 
 2 - Instalar las dependencias necesarias en el proyecto donde utilizarás el clasificador. En el archivo de requerimientos (/deps/requirements.txt) encontrarás las dependencias necesarias.
 
