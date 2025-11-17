@@ -4,6 +4,9 @@ Clasificador para Sistema de Gestión de Reclamos en la facultad
 
 El objetivo de este proyecto es proveer un clasificador de reclamos entrenado guardado en el archivo pickle "claims_clf.pkl".
 
+### Versión de Python
+- Python 3.13.X (ejemplo 3.13.9)
+
 ### Dependencias necesarias
 
 - [Scikit-learn](https://pypi.org/project/scikit-learn/): `pip install scikit-learn` 
